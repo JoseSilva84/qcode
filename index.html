@@ -4,46 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador QR Code</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        #qr-container {
-            margin: 20px auto;
-            padding: 20px;
-            background: white;
-            display: inline-block;
-        }
-        button {
-            background: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            text-align: center;
-        }
-        .quadro {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center
-        }
-        button:hover {
-            background: #45a049;
-        }
-        input {
-            padding: 10px;
-            width: 300px;
-            margin: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
     <div class="quadro">
@@ -55,29 +17,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-    <script>
-        function gerarQRCode() {
-            const url = document.getElementById('url').value;
-            const container = document.getElementById('qr-container');
-            
-            // Limpar container
-            container.innerHTML = '';
-            
-            // Gerar QR Code
-            new QRCode(container, {
-                text: url,
-                width: 256,
-                height: 256,
-                colorDark: "#000000",
-                colorLight: "#ffffff",
-                correctLevel: QRCode.CorrectLevel.H
-            });
-        }
-        
-        // Gerar automaticamente ao carregar a página
-        window.onload = function() {
-            gerarQRCode();
-        };
-    </script>
+    <script src="index.js"></script>
 </body>
 </html>
