@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador QR Code</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        #qr-container {
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            display: inline-block;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+        }
+        .quadro {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
+        }
+        button:hover {
+            background: #45a049;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            margin: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quadro">
+        <h1>Gerador de QR Code</h1>
+        <input type="text" id="url" value="https://projetosocial-iasd.vercel.app/" size="50">
+        <br>
+        <button onclick="gerarQRCode()">Gerar QR Code</button>
+        <div id="qr-container"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+    <script>
+        function gerarQRCode() {
+            const url = document.getElementById('url').value;
+            const container = document.getElementById('qr-container');
+            
+            // Limpar container
+            container.innerHTML = '';
+            
+            // Gerar QR Code
+            new QRCode(container, {
+                text: url,
+                width: 256,
+                height: 256,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+        
+        // Gerar automaticamente ao carregar a página
+        window.onload = function() {
+            gerarQRCode();
+        };
+    </script>
+</body>
+</html>
